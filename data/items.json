@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1743126059673,
+    "name": "Refrigerante da gente",
+    "unity_price": 300,
+    "size": 0.5,
+    "count_type": "LITTERS",
+    "quantity": 12
+  },
+  {
+    "id": 1743126093116,
+    "name": "Refrigerante do povo",
+    "unity_price": 199,
+    "size": 0.5,
+    "count_type": "LITTERS",
+    "quantity": 12
+  }
+]
