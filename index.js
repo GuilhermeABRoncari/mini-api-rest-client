@@ -20,6 +20,16 @@ function writeData(data) {
   fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
 }
 
+app.post("/auth", (req, res) => {
+  const { username, password } = req.body;
+
+  if (username && password) {
+    return res.json({ token: AUTH_TOKEN });
+  }
+
+  return res.status(400).json({ error: "Usuário ou senha não informados" });
+});
+
 app.use((req, res, next) => {
   const authHeader = req.headers.authorization;
 
@@ -34,16 +44,6 @@ app.use((req, res, next) => {
   }
 
   next();
-});
-
-app.post("/auth", (req, res) => {
-  const { username, password } = req.body;
-
-  if (username && password) {
-    return res.json({ token: AUTH_TOKEN });
-  }
-
-  return res.status(400).json({ error: "Usuário ou senha não informados" });
 });
 
 app.get("/items", (req, res) => {
