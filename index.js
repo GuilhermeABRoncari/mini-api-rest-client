@@ -51,6 +51,18 @@ app.get("/items", (req, res) => {
   res.json(items);
 });
 
+app.get("/items/:id", (req, res) => {
+  const items = readData();
+  const id = parseInt(req.params.id);
+  const item = items.find((item) => item.id === id);
+
+  if (!item) {
+    return res.status(404).json({ error: "Item não encontrado" });
+  }
+
+  res.json(item);
+});
+
 app.post("/items", (req, res) => {
   const items = readData();
   const newItem = { id: Date.now(), ...req.body };
